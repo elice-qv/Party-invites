@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using partyInvites1.Models;
 
 namespace partyInvites1.Controllers
 {
@@ -15,9 +16,15 @@ namespace partyInvites1.Controllers
             ViewBag.Greeting = hour < 12 ? "Good Morning" : "Goot Afternoon";
             return View();
         }
+        [HttpGet]
         public ViewResult RsvpForm()
         {
             return View();
+        }
+        [HttpPost]
+        public ViewResult RsvpForm(GuestResponse guestResponse)
+        {
+            return View("Thanks", guestResponse);
         }
     }
 }
