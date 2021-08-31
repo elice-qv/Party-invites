@@ -9,7 +9,7 @@ namespace partyInvites1.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ViewResult Index()
         {
             int hour = DateTime.Now.Hour;
@@ -24,7 +24,16 @@ namespace partyInvites1.Controllers
         [HttpPost]
         public ViewResult RsvpForm(GuestResponse guestResponse)
         {
-            return View("Thanks", guestResponse);
+            if (ModelState.IsValid)
+            {
+                //email response
+                return View("Thanks", guestResponse);
+            }
+            else
+            {
+                //there is a valid er
+                return View();
+            }
         }
     }
 }
