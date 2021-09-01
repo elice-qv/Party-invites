@@ -12,20 +12,38 @@
     <title>Thanks</title>
 </head>
 <body>
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp.yandex.ru";
+            WebMail.SmtpPort = 465;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "vadim.bondarev";
+            WebMail.Password = "310199Qvb";
+            WebMail.From = "Vadim.bondarev@yandex.ru";
+            WebMail.Send("party-host@example.com", "RSVP Notification",
+            Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not")
+            + "attending");
+        } //Отправка сообщения на почту из html-формы по smtp
+        catch (Exception)
+        {
+            @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+        } //Сообщение об ошибке для пользователя
+    }
     <div>
         <h1>Thank you, @Model.Name!</h1>
         @if (Model.WillAttend == true)
-            {
-                @:It's great than you're coming. the drinks are already in the fridga!
-            }
-         else if (Model.WillAttend == false)
-            {
-                @:Sorry to hear that you can't make it, but thanks for letting us know.
-            }
-         else
-            {
-                @:Dear @Model.Name, Please choose an options!
-            }
+        {
+            @:It's great than you're coming. the drinks are already in the fridga!
+        }
+        else if (Model.WillAttend == false)
+        {
+            @:Sorry to hear that you can't make it, but thanks for letting us know.
+        }
+        else
+        {
+            @:Dear @Model.Name, Please choose an options!
+        }
 
     </div>
 </body>

@@ -8,6 +8,7 @@
 
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" /> 
     <meta name="viewport" content="width=device-width" />
     <title>RsvpForm</title>
 </head>
@@ -16,7 +17,7 @@
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary()
-            <p>Your name: @Html.TextBoxFor(x => x.Name)</p>
+            <p>Your name: @Html.TextBoxFor(x => x.Name)</p> 
             <p>Your email: @Html.TextBoxFor(x => x.Email)</p>
             <p>Your phone: @Html.TextBoxFor(x => x.Phone)</p>
             <p>
